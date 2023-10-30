@@ -91,5 +91,6 @@ void selectionSort(vector<int> &arr, int n) {
 }
 
 int main() {
+    FAST_IO
     return 0;
 }
