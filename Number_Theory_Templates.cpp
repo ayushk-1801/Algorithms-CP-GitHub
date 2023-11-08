@@ -16,15 +16,19 @@ bool isPrime(int n) {
 }
 
 // Sieve of Eratosthenes
-void sieve(int n) {
-    vector<bool> is_prime(n + 1, true);
+int is_prime[1000001];
 
-    is_prime[0] = is_prime[1] = false;
+void sieve() {
+    int maxN = 1000000;
 
-    for (int i = 2; i <= n; i++) {
-        if (is_prime[i] && (long long)i * i <= n) {
-            for (int j = i * i; j <= n; j += i)
-                is_prime[j] = false;
+    for (int i = 1; i <= maxN; i++) is_prime[i] = 1;
+    is_prime[0] = is_prime[1] = 0;
+
+    for (int i = 2; i * i <= maxN; i++) {
+        if (is_prime[i]) {
+            for (int j = i * i; j <= maxN; j++) {
+                is_prime[j] = 0;
+            }
         }
     }
 }
@@ -72,6 +76,24 @@ int power_modularExponentiation(int a, int n, int p) {
         } else {
             a = (a * a) % p;
             n /= 2;
+        }
+    }
+}
+
+// Prime Factorization using Sieve
+int arr[1000001];
+
+void sieve() {
+    int maxN = 1000000;
+    for (int i = 1; i <= maxN; i++) arr[i] = -1;
+
+    for (int i = 2; i <= maxN; i++) {
+        if (arr[i] == -1) {
+            for (int j = i; j <= maxN; j += i) {
+                if (arr[j] == -1) {
+                    arr[j] = i;
+                }
+            }
         }
     }
 }
