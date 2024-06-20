@@ -1,5 +1,12 @@
-#include<bits/stdc++.h>
+#pragma GCC optimize("O3,unroll-loops")
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
 using namespace std;
+using namespace chrono;
+using namespace __gnu_pbds;
 
 #define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define MOD 1000000007
@@ -15,12 +22,12 @@ using namespace std;
 #define set_bits __builtin_popcountll
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define yes cout << "YES" << nline
+#define no cout << "NO" << nline
+#define neg cout << -1 << nline
 
-#ifdef ayush_1801
 #define debug(x) cerr << #x<<" "; _print(x); cerr << endl;
-#else
-#define debug(x);
-#endif
 
 typedef long long ll;
 typedef unsigned long long ull;
