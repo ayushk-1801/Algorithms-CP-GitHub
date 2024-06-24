@@ -32,6 +32,8 @@ using namespace __gnu_pbds;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double lld;
+typedef __int128 ell;
+typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag, tree_order_statistics_node_update > pbds; // find_by_order, order_of_key
 
 void _print(ll t) {cerr << t;}
 void _print(int t) {cerr << t;}
@@ -51,6 +53,7 @@ template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_prin
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
+void _print(pbds v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
