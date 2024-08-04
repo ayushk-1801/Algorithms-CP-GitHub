@@ -17,3 +17,16 @@ ll phi(ll n) {
         number = (number / n * (n - 1));
     return number;
 } // O(sqrt(N))
+
+vector<ll> phi(ll n) {
+    vector<ll> res(n + 1);
+    for (ll i = 0; i <= n; i++)
+        res[i] = i;
+    for (ll i = 2; i <= n; i++) {
+        if (res[i] == i) {
+            for (ll j = i; j <= n; j += i)
+                res[j] -= res[j] / i;
+        }
+    }
+    return res;
+} // O(nloglogn)
