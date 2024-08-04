@@ -1,78 +1,27 @@
-template <typename A, typename B> string to_string(pair<A, B> p);
+void __print(int x) {cerr << x;}
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
 
-template <typename A, typename B, typename C>
-string to_string(tuple<A, B, C> p);
-
-template <typename A, typename B, typename C, typename D>
-string to_string(tuple<A, B, C, D> p);
-
-string to_string(const string &s) { return '"' + s + '"'; }
-
-string to_string(const char *s) { return to_string((string)s); }
-
-string to_string(bool b) { return (b ? "true" : "false"); }
-
-string to_string(vector<bool> v) {
-    bool first = true;
-    string res = "{";
-    for (int i = 0; i < static_cast<int>(v.size()); i++) {
-        if (!first) {
-            res += ", ";
-        }
-        first = false;
-        res += to_string(v[i]);
-    }
-    res += "}";
-    return res;
-}
-
-template <size_t N> string to_string(bitset<N> v) {
-    string res = "";
-    for (size_t i = 0; i < N; i++) {
-        res += static_cast<char>('0' + v[i]);
-    }
-    return res;
-}
-
-template <typename A> string to_string(A v) {
-    bool first = true;
-    string res = "{";
-    for (const auto &x : v) {
-        if (!first) {
-            res += ", ";
-        }
-        first = false;
-        res += to_string(x);
-    }
-    res += "}";
-    return res;
-}
-
-template <typename A, typename B> string to_string(pair<A, B> p) {
-    return "(" + to_string(p.first) + ", " + to_string(p.second) + ")";
-}
-
-template <typename A, typename B, typename C>
-string to_string(tuple<A, B, C> p) {
-    return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " +
-    to_string(get<2>(p)) + ")";
-}
-
-template <typename A, typename B, typename C, typename D>
-string to_string(tuple<A, B, C, D> p) {
-    return "(" + to_string(get<0>(p)) + ", " + to_string(get<1>(p)) + ", " +
-    to_string(get<2>(p)) + ", " + to_string(get<3>(p)) + ")";
-}
-
-void debug_out() { cerr << endl; }
-
-template <typename Head, typename... Tail> void debug_out(Head H, Tail... T) {
-    cerr << " " << to_string(H);
-    debug_out(T...);
-}
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "\n";}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
 
 #ifdef LOCAL
-#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#define debug(x...) cerr << "[" << #x << "]: "; _print(x)
 #else
-#define debug(...) 42
+#define debug(x...)
 #endif
