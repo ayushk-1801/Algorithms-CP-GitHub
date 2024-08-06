@@ -1,4 +1,4 @@
-/* EULER'S TOTIENT FUNCTION */
+// O(sqrt(N))
 ll phi(ll n) {
     ll number = n;
     if (n % 2 == 0) {
@@ -16,8 +16,9 @@ ll phi(ll n) {
     if (n > 1)
         number = (number / n * (n - 1));
     return number;
-} // O(sqrt(N))
+}
 
+// O(nloglogn)
 vector<ll> phi(ll n) {
     vector<ll> res(n + 1);
     for (ll i = 0; i <= n; i++)
@@ -29,4 +30,4 @@ vector<ll> phi(ll n) {
         }
     }
     return res;
-} // O(nloglogn)
+}
