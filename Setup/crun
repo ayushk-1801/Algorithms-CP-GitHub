@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+printf "Compiling....\n\n"
+g++ "$1.cpp" -ggdb -o build/"$1" || exit 1
+
+tput setaf 2; tput bold
+printf "Clipboard:\n"
+tput setaf 3
+xclip -sel c -o
+printf "\n\n"
+tput sgr0
+
+tput setaf 2; tput bold
+printf "Result:\n"
+tput sgr0
+xclip -sel c -o | ./build/"$1"
+printf "\n"

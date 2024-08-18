@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+printf "Compiling....\n\n"
+g++ $1.cpp -o build/$1 || exit 1
+
+tput setaf 2; tput bold
+printf "Done!\n\n"
+tput sgr0
+
+./build/$1
+
+printf "\n"
