@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 printf "Compiling....\n\n"
-g++ "$1.cpp" -ggdb -o build/"$1" || exit 1
+g++ "$1.cpp" -ggdb -DLOCAL -o build/"$1" || exit 1
 
 tput setaf 2; tput bold
 printf "Clipboard:\n"
